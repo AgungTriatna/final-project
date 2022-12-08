@@ -37,7 +37,7 @@
             <div class="col-sm-4">
                 <select class="form-control selectpicker" id="barang" data-live-search="true" name="barang" required>
                     <option value="">--- Pilih barang ---</option>
-                    <?php foreach ($data['data_barang'] as $b) : ?>
+                    <?php foreach ($data['data_barang'] as $b) : ?>              <!-- nyambung ke db -->
                         <option value="<?= $b['id'] ?>"><?= $b['nama_barang'] ?></option>
                     <?php endforeach ?>
                 </select>

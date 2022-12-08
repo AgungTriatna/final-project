@@ -1,5 +1,5 @@
 const base_url = $('meta[name="base_url"]').attr('content');
-$('#tambah-peminjaman').on('click', function () {
+$('#tambah-peminjaman').on('click', function() {
     let idmember = $('#id-member').val();
     let barang = $('#barang').val();
     let waktu = $('#lama-pinjam').val();
@@ -16,7 +16,7 @@ $('#tambah-peminjaman').on('click', function () {
         },
         method: 'post',
         dataType: 'json',
-        success: function (data) {
+        success: function(data) {
             if (data == 'exist') {
                 alert('Barang ini sudah masuk ke sesi peminjaman');
             } else if (data == 'x') {
@@ -26,7 +26,7 @@ $('#tambah-peminjaman').on('click', function () {
             } else {
                 let tabel = '';
                 let j = 1;
-                $.each(data, function (i, val) {
+                $.each(data, function(i, val) {
                     tabel +=
                         '<tr>' +
                         '<td>' + j++ + '</td>' +
@@ -43,7 +43,7 @@ $('#tambah-peminjaman').on('click', function () {
     });
 });
 
-$('#cek-member').on('click', function () {
+$('#cek-member').on('click', function() {
     let idmember = $('#id-member').val();
     $.ajax({
         url: base_url + '/peminjaman/cekmember',
@@ -52,7 +52,7 @@ $('#cek-member').on('click', function () {
         },
         method: 'post',
         dataType: 'json',
-        success: function (data) {
+        success: function(data) {
             if (data == 'tidak ditemukan') {
                 $('#ada').html('Member tidak ditemukan!');
                 $('#nama-member').html('');
@@ -64,13 +64,13 @@ $('#cek-member').on('click', function () {
     });
 });
 
-$('#simpan-pinjaman').on('click', function () {
+$('#simpan-pinjaman').on('click', function() {
     if (confirm('Apakah anda yakin ingin menyimpan pinjaman baru?')) {
         $.ajax({
             url: base_url + '/peminjaman/simpan',
             method: 'post',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
                 if (data == 'no_session') {
                     alert('Silahkan buat sesi peminjaman terlebih dahulu!');
                 } else {
@@ -82,7 +82,7 @@ $('#simpan-pinjaman').on('click', function () {
     }
 });
 
-$(document).on('click', '.btn-detail-pinjaman', function () {
+$(document).on('click', '.btn-detail-pinjaman', function() {
     let id = $(this).data('id');
     if ($(this).data('kembali') == true) {
         $('#selesaikan-pinjaman').hide();
@@ -98,7 +98,7 @@ $(document).on('click', '.btn-detail-pinjaman', function () {
         },
         method: 'post',
         dataType: 'json',
-        success: function (data) {
+        success: function(data) {
             $('#nama-member').html(data[1].nama);
             $('#lama-pinjam').html(data[1].lama_pinjam + ' hari');
             if (data[1].denda != null) {
@@ -107,7 +107,7 @@ $(document).on('click', '.btn-detail-pinjaman', function () {
                 $('#denda').html('Denda : Rp 0');
             }
             let barang = '';
-            $.each(data[0], function (i, val) {
+            $.each(data[0], function(i, val) {
                 barang +=
                     '<li>' + val.nama_barang + '</li>'
             });
@@ -116,7 +116,7 @@ $(document).on('click', '.btn-detail-pinjaman', function () {
     });
 });
 
-$('#selesaikan-pinjaman').on('click', function () {
+$('#selesaikan-pinjaman').on('click', function() {
     let id = $(this).data('id');
     if (confirm('Apakah anda yakin ingin menyelesaikan pinjaman ini?')) {
         $.ajax({
@@ -126,7 +126,7 @@ $('#selesaikan-pinjaman').on('click', function () {
             },
             method: 'post',
             dataType: 'json',
-            success: function (data) {
+            success: function(data) {
                 if (data == 'tidak denda') {
                     alert('Pinjaman berhasil diselesaikan, tidak ada denda');
                     location.reload();
