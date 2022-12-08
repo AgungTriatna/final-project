@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2022 at 05:26 PM
+-- Generation Time: Dec 08, 2022 at 01:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -73,10 +73,27 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `kode_barang`, `nama_barang`, `tipe_barang`, `jmlh_stok`, `lokasi`, `tgl_regist`) VALUES
-(1, 'spm-20221-001', 'aji', 'aji', 3, 'aji', '2022-11-26'),
-(2, 'aji', 'aji', 'aji', 4, 'aji', '2022-11-27'),
-(11, 'gtyui', 'hjkl', 'hjkl', 56, 'ghjkl', '2022-11-29'),
-(12, 'anisa', 'alifa', 'cantik', 4, 'magelang', '2022-11-29');
+(16, 'spm-00001-001', 'aji', 'aji', 3, 'aji', '2022-12-06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departement`
+--
+
+CREATE TABLE `departement` (
+  `id_departement` int(5) NOT NULL,
+  `nama_departement` varchar(100) NOT NULL,
+  `no_tlp` int(5) NOT NULL,
+  `keterangan` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `departement`
+--
+
+INSERT INTO `departement` (`id_departement`, `nama_departement`, `no_tlp`, `keterangan`) VALUES
+(7, 'PPIC', 21456789, 'Production Planing Inventory Control - Warehouse');
 
 -- --------------------------------------------------------
 
@@ -110,7 +127,8 @@ INSERT INTO `detail_pinjaman` (`id_pinjaman`, `id_buku`) VALUES
 (15, 3),
 (16, 8),
 (16, 1),
-(17, 3);
+(17, 3),
+(18, 1);
 
 -- --------------------------------------------------------
 
@@ -134,7 +152,9 @@ INSERT INTO `kategori` (`id`, `nama_kategori`, `keterangan`) VALUES
 (3, 'Dongeng', 'Dongeng, merupakan suatu kisah yang di angkat dari pemikiran fiktif dan kisah nyata'),
 (4, 'Biografi', 'Biografi adalah kisah atau keterangan tentang kehidupan seseorang.'),
 (5, 'Komputer', 'Buku yang berhubungan dengan komputer'),
-(6, 'Politik', 'Buku tentang politik');
+(6, 'Politik', 'Buku tentang politik'),
+(10, 'apd', 'beiris apd'),
+(11, 'aji', 'aji');
 
 -- --------------------------------------------------------
 
@@ -190,7 +210,8 @@ INSERT INTO `pinjaman` (`id_pinjaman`, `id_member`, `tanggal_pinjam`, `lama_pinj
 (14, 5, '2020-05-19', 3, '2022-11-27', 9190000),
 (15, 5, '2020-05-23', 7, '2020-05-28', 0),
 (16, 6, '2020-05-23', 7, '2022-11-25', 9090000),
-(17, 7, '2022-11-26', 7, NULL, NULL);
+(17, 7, '2022-11-26', 7, NULL, NULL),
+(18, 7, '2022-12-05', 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -211,10 +232,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `nama`) VALUES
-(4, 'admin', '$2y$10$QSkKJtJCRxCPJlr13od76uSzQwFd3lj/k3DWlV9dg9zkvvv.m9hVW', '1', 'Admin'),
 (5, 'andikatedja', '$2y$10$lzy5dqf4pJlglsXnso46u.u9.YsHPbk.tnut7LVEa8HKLL/clJUF.', '2', 'Andika Tedja'),
-(6, 'anyageraldine', '$2y$10$r/wS0twqMoAcmMd4iYIeaOYixwGaneXx769.PL2Tj1uJtDH2D3dJq', '2', 'Anya Geraldine'),
-(7, 'aji', '$2y$10$z8cSbLQsstJeZD9vyoyME.KdUu0TxqUh6djTYskOkKVexhAoiEFnS', '2', 'aji');
+(7, 'aji', '$2y$10$z8cSbLQsstJeZD9vyoyME.KdUu0TxqUh6djTYskOkKVexhAoiEFnS', '2', 'aji'),
+(8, 'wahyu', '$2y$10$fFQnxnyAyLDnjdV8DkzxEeg.0s4UeaADbEuvvs.ay1IDvQMgx5Gba', '2', 'wahyu'),
+(9, 'anisa', '$2y$10$MiLWXUUZ12SZkr5HpSYxtuvo742Y1FgSrXUTi/DysnzRxacMt8tbG', '2', 'anisa'),
+(17, 'dandi', '$2y$10$atmDQweWYfEuFKK51V4DneXTCs7FosuHVWofxGySRipIAoCOXcyy.', '2', 'dandi'),
+(18, 'admin', '$2y$10$Yl/LMhZt0OaHVvWLn/Is3uqdU3/bv2fwaGnJBamfktTlC1Cbg5VyW', '1', 'admin'),
+(19, 'ajilkkkkkkkk', '$2y$10$l1eZC/wDlvCnVXd.mlnGW.9iDQUjrOpzWqURUnjHKReooo7oJ3Zq6', '2', 'ajikkkkkk');
 
 --
 -- Indexes for dumped tables
@@ -234,6 +258,12 @@ ALTER TABLE `buku`
 ALTER TABLE `data_barang`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kode_part` (`kode_barang`);
+
+--
+-- Indexes for table `departement`
+--
+ALTER TABLE `departement`
+  ADD PRIMARY KEY (`id_departement`);
 
 --
 -- Indexes for table `detail_pinjaman`
@@ -281,13 +311,19 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `data_barang`
 --
 ALTER TABLE `data_barang`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `departement`
+--
+ALTER TABLE `departement`
+  MODIFY `id_departement` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `penerbit`
@@ -299,13 +335,13 @@ ALTER TABLE `penerbit`
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pinjaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
