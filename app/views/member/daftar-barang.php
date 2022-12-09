@@ -7,21 +7,39 @@
             <thead class="thead-light">
                 <tr>
                     <th>No</th>
+                    <th>Kode Barang</th>
                     <th>Nama Barang</th>
-                    <th>Kategori</th>
+                    <th>Tipe Barang</th>
+                    <th>Jumlah Stok</th>
+                    <th>Lokasi</th>
+                    <th>Tahun Registrasi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php $i = 1;
-                foreach ($data['buku'] as $b) : ?>
+            <?php if ($data['data_barang'] != []) : ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data['data_barang'] as $brg) : ?>
+                        <tr>
+                            <td><?= $i ?></td>
+                            <td><?= $brg['kode_barang'] ?></td>
+                            <td><?= $brg['nama_barang'] ?></td>
+                            <td><?= $brg['tipe_barang'] ?></td>
+                            <td><?= $brg['jmlh_stok'] ?></td>
+                            <td><?= $brg['lokasi'] ?></td>
+                            <td><?= $brg['tgl_regist'] ?></td>
+                            <td class="text-center">
+                                <a class="badge badge-info" href="<?= BASEURL ?>/admin/detail-barang/<?= $brg['id'] ?>">Detail ></a>
+                                <a class="badge badge-warning" href="<?= BASEURL ?>/admin/ubah-barang/<?= $brg['id'] ?>">Ubah</a>
+                                <a class="badge badge-danger" href="<?= BASEURL ?>/admin/hapus-barang/<?= $brg['id'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Hapus</a>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
                     <tr>
-                        <td><?= $i++ ?></td>
-                        <td><?= $b['judul'] ?></td>
-                        <td><?= $b['nama_kategori'] ?></td>
-                        <td><a href="#" class="badge badge-info btn-detail-buku" data-toggle="modal" data-target="#detailBuku" data-id="<?= $b['id'] ?>">Detail</a></td>
+                        <td colspan="5"><strong>Tidak ada data barang</strong></td>
                     </tr>
-                <?php endforeach ?>
+                <?php endif; ?>
             </tbody>
         </table>
         </div>
