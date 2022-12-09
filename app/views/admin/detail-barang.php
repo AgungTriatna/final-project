@@ -14,7 +14,7 @@
                 <li class="list-group-item"><b>Lokasi:</b> <?= $data['data_barang']['lokasi'] ?></li>
             </ul>
             <div class="card-body">
-                <a href="<?= BASEURL ?>/admin/daftar-barang" class="card-link">Kembali</a>
+                <a class ="btn btn-primary" href="<?= BASEURL ?>/admin/daftar-barang" class="card-link">Kembali</a>
             </div>
         </div>
     </div>

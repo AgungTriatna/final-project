@@ -14,7 +14,7 @@
                 <li class="list-group-item"><b>ISBN:</b> <?= $data['buku']['isbn'] ?></li>
             </ul>
             <div class="card-body">
-                <a href="<?= BASEURL ?>/admin/daftar-buku" class="card-link">Kembali</a>
+                <a class = "btn btn-primary" href="<?= BASEURL ?>/admin/daftar-buku" class="card-link">Kembali</a>
             </div>
         </div>
     </div>

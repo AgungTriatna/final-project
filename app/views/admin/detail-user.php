@@ -11,7 +11,7 @@
                 <li class="list-group-item"><b>Role:</b> <?= $data['users']['role'] ?></li>
             </ul>
             <div class="card-body">
-                <a href="<?= BASEURL ?>/admin/daftar-user" class="card-link">Kembali</a>
+                <a class="btn btn-primary" href="<?= BASEURL ?>/admin/daftar-user" class="card-link">Kembali</a>
             </div>
         </div>
     </div>

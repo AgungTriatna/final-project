@@ -4,8 +4,6 @@ class Admin extends Controller
 {
     // private $bukuModel;
     private $barangModel;
-    private $penerbitModel;
-    private $kategoriModel;
     private $peminjamanModel;
     private $userModel;
     private $payload;
@@ -21,10 +19,7 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/login');
         }
 
-        // $this->bukuModel = $this->model('Buku_model');
         $this->barangModel = $this->model('Barang_model');
-        $this->penerbitModel = $this->model('Penerbit_model');
-        $this->kategoriModel = $this->model('Kategori_model');
         $this->departementModel = $this->model('Departement_model');
         $this->peminjamanModel = $this->model('Peminjaman_model');
         $this->userModel = $this->model('User_model');
@@ -100,27 +95,6 @@ class Admin extends Controller
         }
     }
 
-    public function ubah_departement($id_departement = 0)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->departementModel->updateDepartement($id_departement, $_POST);
-            Flasher::setFlash('Departement berhasil diubah', 'success');
-            header('Location: ' . BASEURL . '/admin/departement');
-        }
-
-        if ($id_departement) {
-            $data['title'] = 'Departement';
-            $data['nama'] = $this->payload->nama;
-            $data['departement'] = $this->departementModel->getDepartementById($id_departement);
-
-            $this->view('admin/header', $data);
-            $this->view('admin/update-departement', $data);
-            $this->view('admin/footer');
-        } else {
-            header('Location: ' . BASEURL . '/admin/departement');
-        }
-    }
-
     public function hapus_barang($id = 0)
     {
         if ($id) {
@@ -165,27 +139,6 @@ class Admin extends Controller
             }
         } else {
             Flasher::setFlash('Password dan konfirmasi password salah.', 'danger');
-            header('Location: ' . BASEURL . '/admin/daftar-user');
-        }
-    }
-
-    public function ubah_user($id = 0)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->ubahUser($id, $_POST);
-            Flasher::setFlash('User berhasil diubah', 'success');
-            header('Location: ' . BASEURL . '/admin/daftar-user');
-        }
-
-        if ($id) {
-            $data['title'] = 'Register';
-            $data['nama'] = $this->payload->nama;
-            $data['users'] = $this->userModel->getDetailUser($id);
-
-            $this->view('admin/header', $data);
-            $this->view('admin/ubah-user', $data);
-            $this->view('admin/footer');
-        } else {
             header('Location: ' . BASEURL . '/admin/daftar-user');
         }
     }
@@ -267,64 +220,6 @@ class Admin extends Controller
         $this->view('admin/footer');
     }
 
-    public function penerbit()
-    {
-        $data['title'] = 'Penerbit';
-        $data['nama'] = $this->payload->nama;
-        $data['penerbit'] = $this->penerbitModel->getAllPenerbit();
-
-        $this->view('admin/header', $data);
-        $this->view('admin/penerbit', $data);
-        $this->view('admin/footer');
-    }
-
-    public function tambah_penerbit()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        }
-
-        $this->penerbitModel->insertPenerbit($_POST);
-        Flasher::setFlash('Penerbit berhasil ditambah', 'success');
-        header('Location: ' . BASEURL . '/admin/penerbit');
-    }
-
-    public function ubah_penerbit($id = 0)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->penerbitModel->updatePenerbit($id, $_POST);
-            Flasher::setFlash('Penerbit berhasil diubah', 'success');
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        }
-
-        if (!$id) {
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        }
-
-        $data['title'] = 'Penerbit';
-        $data['nama'] = $this->payload->nama;
-        $data['penerbit'] = $this->penerbitModel->getPenerbitById($id);
-        $this->view('admin/header', $data);
-        $this->view('admin/ubah-penerbit', $data);
-        $this->view('admin/footer');
-    }
-
-    public function hapus_penerbit($id = 0)
-    {
-        if (!$id) {
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        }
-
-        $hapus = $this->penerbitModel->hapusPenerbit($id);
-        if ($hapus == 0) {
-            Flasher::setFlash('Penerbit tidak ditemukan', 'danger');
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        } else {
-            Flasher::setFlash('Penerbit berhasil dihapus', 'success');
-            header('Location: ' . BASEURL . '/admin/penerbit');
-        }
-    }
-
     public function departement()
     {
         $data['title'] = 'Departement';
@@ -381,66 +276,6 @@ class Admin extends Controller
             $this->view('admin/footer');
         } else {
             header('Location: ' . BASEURL . '/admin/departement');
-        }
-    }
-
-
-    public function kategori()
-    {
-        $data['title'] = 'Kategori';
-        $data['nama'] = $this->payload->nama;
-        $data['kategori'] = $this->kategoriModel->getAllKategori();
-        $this->view('admin/header', $data);
-        $this->view('admin/kategori', $data);
-        $this->view('admin/footer');
-    }
-    
-
-
-    public function tambah_kategori()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            header('Location: ' . BASEURL . '/admin/kategori');
-        }
-
-        $this->kategoriModel->tambahKategori($_POST);
-        Flasher::setFlash('Kategori baru berhasil ditambah', 'success');
-        header('Location: ' . BASEURL . '/admin/kategori');
-    }
-
-    public function ubah_kategori($id = 0)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->kategoriModel->updateKategori($id, $_POST);
-            Flasher::setFlash('Kategori berhasil diubah', 'success');
-            header('Location: ' . BASEURL . '/admin/kategori');
-        }
-
-        if (!$id) {
-            header('Location: ' . BASEURL . '/admin/kategori');
-        }
-
-        $data['title'] = 'Kategori';
-        $data['nama'] = $this->payload->nama;
-        $data['kategori'] = $this->kategoriModel->getKategoriById($id);
-        $this->view('admin/header', $data);
-        $this->view('admin/ubah-kategori', $data);
-        $this->view('admin/footer');
-    }
-
-    public function hapus_kategori($id)
-    {
-        if (!$id) {
-            header('Location: ' . BASEURL . '/admin/kategori');
-        }
-
-        $hapus = $this->kategoriModel->hapusKategori($id);
-        if ($hapus == 0) {
-            Flasher::setFlash('Kategori tidak ditemukan', 'danger');
-            header('Location: ' . BASEURL . '/admin/kategori');
-        } else {
-            Flasher::setFlash('Kategori berhasil dihapus', 'success');
-            header('Location: ' . BASEURL . '/admin/kategori');
         }
     }
 

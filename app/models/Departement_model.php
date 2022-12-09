@@ -59,7 +59,8 @@ class Departement_model
         $keterangan = htmlspecialchars($data['keterangan']);
 
         $sql = "UPDATE departement SET
-                nama_kategori = :nama_kategori,
+                nama_departement = :nama_departement,
+                no_tlp = :no_tlp,
                 keterangan = :keterangan
                 WHERE id_departement = :id_departement";
 
