@@ -24,6 +24,8 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-dark.css" id="darkTheme" disabled>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="vertical  light  ">
@@ -119,9 +121,9 @@
                     </li>
 
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= BASEURL ?>/member/daftar-barang">
+                        <a class="nav-link" href="<?= BASEURL ?>/member/request-barang">
                             <i class="fe fe-credit-card fe-16"></i>
-                            <span class="ml-3 item-text">Data Barang</span>
+                            <span class="ml-3 item-text">Request Barang</span>
                         </a>
                     </li>
 

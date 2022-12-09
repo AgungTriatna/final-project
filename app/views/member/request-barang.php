@@ -1,6 +1,7 @@
 <div class="card shadow">
     <div class="card-body">
-        <h3>DaftaR Inventaris Perusahaan</h3>
+        <h3>Daftar Inventaris Perusahaan</h3>
+        <h6>Advics Manufacturing Indonesia PT.  </h6>
         <hr>
         <p>Cari Barang Yang Akan Anda Pinjam !</p>
         <table id="tbl-daftar-buku" class="table dt-responsive nowrap" style="width: 100%;">
@@ -28,9 +29,8 @@
                             <td><?= $brg['lokasi'] ?></td>
                             <td><?= $brg['tgl_regist'] ?></td>
                             <td class="text-center">
-                                <a class="badge badge-info" href="<?= BASEURL ?>/admin/detail-barang/<?= $brg['id'] ?>">Detail ></a>
-                                <a class="badge badge-warning" href="<?= BASEURL ?>/admin/ubah-barang/<?= $brg['id'] ?>">Ubah</a>
-                                <a class="badge badge-danger" href="<?= BASEURL ?>/admin/hapus-barang/<?= $brg['id'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Hapus</a>
+                                <a class="btn btn-danger" href="<?= BASEURL ?>/member/detail-barang/<?= $brg['id'] ?>">Detail </a>
+                                <a class="btn btn-success" href="<?= BASEURL ?>/member/ubah-barang/<?= $brg['id'] ?>">Request</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -42,28 +42,6 @@
                 <?php endif; ?>
             </tbody>
         </table>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="detailBuku" tabindex="-1" role="dialog" aria-labelledby="detailBukuLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailBukuLabel">Detail Barang</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5 id="judul-buku"></h5>
-                    <p id="tahun-terbit"></p>
-                    <p id="penulis"></p>
-                    <p id="isbn"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
