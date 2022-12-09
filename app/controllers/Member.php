@@ -67,6 +67,10 @@ class Member extends Controller             //inheritence/pearisan dari class co
     {
         echo json_encode($this->bukuModel->getDetailBuku($_POST['id']));
     }
+    public function ambil_barang()
+    {
+        echo json_encode($this->barangModel->getDetailBarang($_POST['id']));
+    }
 
     public function daftar_pinjaman()
     {
@@ -112,6 +116,31 @@ class Member extends Controller             //inheritence/pearisan dari class co
 
         $this->view('member/header', $data);
         $this->view('member/input-peminjaman', $data);
+        $this->view('member/footer');
+    }
+    
+    public function input_data()
+    {
+        $data['title'] = 'Input Data';
+        $data['nama'] = $this->payload->nama;
+        $data['data_barang'] = $this->barangModel->getAllBarang();
+        $data['waktu'] = [
+            [
+                'waktu' => 3,
+                'nama' => '3 Hari'
+            ],
+            [
+                'waktu' => 7,
+                'nama' => '7 Hari'
+            ],
+            [
+                'waktu' => 14,
+                'nama' => '14 Hari'
+            ]
+        ];
+
+        $this->view('member/header', $data);
+        $this->view('member/input-data', $data);
         $this->view('member/footer');
     }
 
