@@ -15,7 +15,7 @@
         <div class="form-group row">
             <label for="lama-pinjam" class="col-sm-2 col-form-label">Lama Pinjam</label>
             <div class="col-sm-4">
-                <select class="form-control selectpicker" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <select class="form-control" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
                     <option value="">--- Pilih waktu ---</option>
                     <?php foreach ($data['waktu'] as $w) : ?>
                         <?php if (isset($_SESSION['member_pinjam'])) : ?>
@@ -35,9 +35,10 @@
         <div class="form-group row">
             <label for="data_barang" class="col-sm-2 col-form-label">Barang</label>
             <div class="col-sm-4">
-                <select class="form-control selectpicker" id="barang" data-live-search="true" name="barang" required>
+                <select class="form-control" id="barang" data-live-search="true" name="barang" required>
                     <option value="">--- Pilih barang ---</option>
-                    <?php foreach ($data['data_barang'] as $b) : ?>              <!-- nyambung ke db -->
+                    <?php foreach ($data['data_barang'] as $b) : ?>
+                        <!-- nyambung ke db -->
                         <option value="<?= $b['id'] ?>"><?= $b['nama_barang'] ?></option>
                     <?php endforeach ?>
                 </select>
