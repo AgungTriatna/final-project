@@ -2,13 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Inventory control" />
-    <meta name="author" content="Kelompok 2" />
-
-    <title><?= APP_NAME ?> - Landing</title>
-    <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png"> -->
 
     <!-- Bootstrap core CSS -->
 <link href="<?= BASEURL ?>/css/bootstrap.min.css" rel="stylesheet" />

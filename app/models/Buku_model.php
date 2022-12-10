@@ -59,7 +59,7 @@ class Buku_model
 
         try {
             $this->db->execute();
-        } catch (\PDOException $e) {
+        } catch (\PDOExcweption $e) {
             if ($e->errorInfo[1] == 1062) {
                 return 0;
                 die;

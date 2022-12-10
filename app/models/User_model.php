@@ -100,7 +100,7 @@ class User_model
 
     public function countMember()
     {
-        $this->db->query("SELECT COUNT(*) FROM users WHERE role = '2'");
+        $this->db->query("SELECT COUNT(*) FROM users WHERE role = '1' or '2'");
         return $this->db->numRows();
     }
 
@@ -109,7 +109,7 @@ class User_model
 
         $new_password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO users VALUES 
-                    (null, :username, :pass, 1, :nama)";
+                    (null, :username, :pass, 2, :nama)";
 
         $this->db->query($query);
         $fields = [

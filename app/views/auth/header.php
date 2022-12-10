@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title><?= APP_NAME ?> - <?= $data['judul'] ?></title>
-
+    <title><?= APP_NAME ?></title>
 
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="<?= BASEURL ?>light/css/simplebar.css">
