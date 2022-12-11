@@ -76,6 +76,19 @@ class Member extends Controller             //inheritence/pearisan dari class co
         }
     }
     
+    public function draft($id = 0)
+    {
+        if ($id) {
+            $data['title'] = 'Barang';
+            $data['nama'] = $this->payload->nama;
+            $data['data_barang'] = $this->barangModel->getDetailBarang($id);
+            $this->view('member/header', $data);
+            $this->view('member/request-barang', $data);
+            $this->view('member/footer');
+        } else {
+            echo 'Harap menggunakan tombol yang ada untuk melihat detail barang';
+        }
+    }
 
     public function ambil_buku()
     {

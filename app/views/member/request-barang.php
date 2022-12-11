@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-sm-6">
 			    <div class="form-group">
-					<input class="form-control" type="text" readonly placeholder="Kode Barang" name="kode_barang" value="<?= $data['data_barang']['kode_barang'] ?>">
+                <input type="text" readonly placeholder="Kode Barang" name="kode_barang" value="<?php echo @$data['kode_barang'] ?>" class="form-control">
 				</div>
 			</div>
 			<div class="col-md-4" style="margin-left: -2% padding-right:5px;">
@@ -21,22 +21,22 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
-                        <input class="form-control" type="text" readonly placeholder="Nama Barang" name="nama_barang" id="nama_barang" value="<?= $data['data_barang']['nama_barang'] ?>" required>
+                        <input type="text" readonly name="nama_barang" value="<?= @$data['nama_barang'] ?>" class="form-control">
                     </div>
                     
                     <div class="form-group">
                         <label for="tipe_barang">Tipe Barang</label>
-                        <input class="form-control" type="text" readonly placeholder="Tipe Barang" name="tipe_barang" id="tipe_barang" value="<?= $data['data_barang']['tipe_barang'] ?>" required>
+                        <input type="text" readonly name="tipe_barang" value="<?= @$data['tipe_barang'] ?>" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm-6">
+                <div class="form-group">
+						<label for="">Jumlah Stok</label>
+						<input type="number" readonly name="jmlh_stok" id="jmlh_stok" class="form-control" value="<?= @$data['jmlh_stok'] ?>">
+					</div>
                     <div class="form-group">
                         <label for="jmlh_stok">Jumlah Pinjam</label>
                         <input type="number" name="jumlah" required id="jumlah" autocomplete="off" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="lokasi">Lokasi</label>
-                        <input class="form-control" type="text" readonly placeholder="Lokasi" name="lokasi" id="lokasi" value="<?= $data['data_barang']['lokasi'] ?>" required>
                     </div>
                     <button id="simpan-pinjaman" class="btn btn-primary">Simpan Draft</button>
                 </div>
@@ -110,7 +110,9 @@
                 <?php foreach ($data['data_barang'] as $brg) : ?>
                     <tr>
                         <td><?= $i ?></td>
-                        <td><?= $brg['kode_barang'] ?></td>
+                        <td>
+                        <a href="<?= BASEURL ?>/member/draft/<?= $brg['id'] = $brg['kode_barang'] ?>"><?= $brg['kode_barang'] ?></a>
+                        </td>
                         <td><?= $brg['nama_barang'] ?></td>
                         <td><?= $brg['tipe_barang'] ?></td>
                         <td><?= $brg['jmlh_stok'] ?></td>
