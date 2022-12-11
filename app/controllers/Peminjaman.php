@@ -35,7 +35,7 @@ class Peminjaman extends Controller
 
         $sudahPinjamBelumKembali = $this->peminjamanModel->pinjamBelumKembali($_POST);
         if ($sudahPinjamBelumKembali > 0) {
-            echo json_encode('x');
+            echo  ('x');
             die;
         }
 

@@ -4,12 +4,10 @@
         <form action="<?= BASEURL ?>/admin/tambah-barang" method="post">
             <div class="row">
                 <div class="col-sm-6">
-
                     <div class="form-group">
                         <label for="kode_barang">Kode Barang</label>
                         <input class="form-control" type="text" name="kode_barang" id="kode_barang" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
                         <input class="form-control" type="text" name="nama_barang" id="nama_barang" required>
@@ -19,7 +17,6 @@
                         <label for="tipe_barang">Tipe Barang</label>
                         <input class="form-control" type="text" name="tipe_barang" id="tipe_barang" required>
                     </div>
-                    
                 </div>
 
                 <div class="col-sm-6">
