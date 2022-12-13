@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="base_url" content="<?= BASEURL ?>">
-    <title><?= APP_NAME ?> - <?= $data['title'] ?></title>
+
+    <title><?= APP_NAME ?> - Landing</title>
+    <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png">
+
 
     <!-- UI -->
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-light.css" id="lightTheme">

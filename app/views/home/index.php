@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,28 +8,24 @@
     <meta name="author" content="Andika Tedja" />
 
     <title><?= APP_NAME ?> - Landing</title>
-    <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png"> -->
+    <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png">
 
     <!-- Bootstrap core CSS -->
-<link href="<?= BASEURL ?>/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?= BASEURL ?>/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Custom fonts for this template -->
-<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
 
-<!-- DataTables -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/css/bootstrap-select.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
 
-<style>
-    body {
-        padding: 5% 10%;
-    }
-</style>
 
 </head>
 
-<body>
+<body style="padding: 5% 10%;">
+
     <div style="">
         <div class="card o-hidden border-0 shadow-lg my-5 col-lg-4 mx-auto">
             <div class="card-body p-0">
@@ -71,10 +67,6 @@
             </div>
         </div>
     </div>
-
-    <h3 class="mt-5 mb-3 pt-2 text-center"></h3>
-
-
 
 </body>
 
