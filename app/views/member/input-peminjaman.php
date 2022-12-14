@@ -5,7 +5,7 @@
         <div class="form-group row">
             <label for="id-member" class="col-sm-2 col-form-label">ID Member</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>" name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>"     name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
             </div>
             <div class="col-sm-4">
                 <button id="cek-member" class="btn btn-info mt-3 mt-sm-0" data-toggle="modal" data-target="#cekMemberModal">Cek Member</button>
@@ -70,5 +70,26 @@
         </table>
 
         <button id="simpan-pinjaman" class="btn btn-success">Simpan Pinjaman</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="cekMemberModal" tabindex="-1" role="dialog" aria-labelledby="cekMemberModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cekMemberModalLabel">Cek Member</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 id="ada"></h5>
+                        <p id="nama-member"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

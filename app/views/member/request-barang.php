@@ -9,30 +9,30 @@
         <div class="row">
             <div class="col-sm-6">
 			    <div class="form-group">
-                <input type="text" readonly placeholder="Kode Barang" name="kode_barang" value="<?php echo @$data['kode_barang'] ?>" class="form-control">
+                <input type="text" readonly placeholder="Kode Barang" id="kode_barang" name="kode_barang" class="form-control">
 				</div>
 			</div>
 			<div class="col-md-4" style="margin-left: -2% padding-right:5px;">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldraft">
                   Pilih Barang
                 </button>
 			</div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
-                        <input type="text" readonly name="nama_barang" value="<?= @$data['nama_barang'] ?>" class="form-control">
+                        <input type="text" readonly name="nama_barang" id="nama_barang" class="form-control">
                     </div>
                     
                     <div class="form-group">
                         <label for="tipe_barang">Tipe Barang</label>
-                        <input type="text" readonly name="tipe_barang" value="<?= @$data['tipe_barang'] ?>" class="form-control">
+                        <input type="text" readonly name="tipe_barang" id="tipe_barang" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm-6">
                 <div class="form-group">
 						<label for="">Jumlah Stok</label>
-						<input type="number" readonly name="jmlh_stok" id="jmlh_stok" class="form-control" value="<?= @$data['jmlh_stok'] ?>">
+						<input type="number" readonly name="jmlh_stok" id ="jmlh_stok" class="form-control">
 					</div>
                     <div class="form-group">
                         <label for="jmlh_stok">Jumlah Pinjam</label>
@@ -83,7 +83,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modaldraft" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -102,6 +102,7 @@
                 <th>Tipe Barang</th>
                 <th>Jumlah Stok</th>
                 <th>Lokasi</th>
+                <th>Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -110,13 +111,19 @@
                 <?php foreach ($data['data_barang'] as $brg) : ?>
                     <tr>
                         <td><?= $i ?></td>
-                        <td>
-                        <a href="<?= BASEURL ?>/member/draft/<?= $brg['id'] = $brg['kode_barang'] ?>"><?= $brg['kode_barang'] ?></a>
-                        </td>
+                        <td><?= $brg['kode_barang'] ?></td>
                         <td><?= $brg['nama_barang'] ?></td>
                         <td><?= $brg['tipe_barang'] ?></td>
                         <td><?= $brg['jmlh_stok'] ?></td>
                         <td><?= $brg['lokasi'] ?></td>
+
+                        <td><button class="btn btn-primary simpan-draft" 
+                        id="simpan-draft"
+                        data-kode=<?= $brg['kode_barang'] ?>
+                        data-nama=<?= $brg['nama_barang'] ?>
+                        data-tipe=<?= $brg['tipe_barang'] ?>
+                        data-stok=<?= $brg['jmlh_stok'] ?>
+                        >Pilih</button></td>
                     </tr>
                     <?php $i++; ?>
                 <?php endforeach; ?>
@@ -134,3 +141,18 @@
     </div>
   </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $(document).on('click', '#simpan-draft', function(){
+            var kode_barang = $(this).data('kode');
+            var nama_barang = $(this).data('nama');
+            var tipe_barang = $(this).data('tipe');
+            var jmlh_stok = $(this).data('stok');
+            $('#kode_barang').val(kode_barang);
+            $('#nama_barang').val(nama_barang);
+            $('#tipe_barang').val(tipe_barang);
+            $('#jmlh_stok').val(jmlh_stok);
+        })
+    })
+</script>
