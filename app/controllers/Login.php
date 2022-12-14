@@ -4,6 +4,7 @@ class Login extends Controller
 {
 
     private $userModel;
+    private $payload;
 
     function __construct()
     {
@@ -63,4 +64,15 @@ class Login extends Controller
             header('Location: ' . BASEURL . '/login');
         }
     }
+
+    public function kontak()
+    {
+        $data['title'] = 'kontak';
+        $data['nama'] = $this->payload->nama;  
+
+        $this->view('auth/header', $data);
+        $this->view('auth/kontak');
+        $this->view('auth/footer');
+    }
+
 }

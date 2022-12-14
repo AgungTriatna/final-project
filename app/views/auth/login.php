@@ -56,7 +56,8 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <p class="small">Lupa Password? <a href="<?= BASEURL ?>/register">Hubungi admin</a></p>
+                                <p class="small">Lupa Password? <a href="kontak">Hubungi admin</a></p>
+                                <a href="about.html">About us</a>
                             </div>
                         </div>
                     </div>

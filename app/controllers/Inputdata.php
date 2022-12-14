@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 define('DB_HOST', $_ENV['DB_HOST']);
 define('DB_USER', $_ENV['DB_USER']);
@@ -33,4 +33,4 @@ if(mysqli_query($conn, $sql)){
     header("Location:select.php");
 }else{
     echo "Data gagal ditambahkan";
-}
+} -->

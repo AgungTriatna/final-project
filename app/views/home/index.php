@@ -63,8 +63,12 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <p class="small">Lupa Password? <a href="<?= BASEURL ?>/register">Hubungi admin</a></p>
+                                <p class="small">Lupa Password? <a href="<?= BASEURL ?>/kontak">Hubungi admin</a></p>
+                                <!-- <p <a href="kontak.html">Hubungi admin</a></p>
+                                <a href="auth/kontak.html">About us</a> -->
                             </div>
+                            <!-- <a class="nav-link" href="<?= BASEURL ?>/member/request-barang"> -->
+                            <!-- <a class="nav-link" href="<?= BASEURL ?>/member/kontak"> -->
                         </div>
                     </div>
                 </div>

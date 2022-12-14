@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="jmlh_stok">Jumlah Pinjam</label>
                         <input type="number" name="jumlah" required id="jumlah" autocomplete="off" class="form-control">
-                    </div>
+                     </div>
                     <div class="form-group">
                         <label for="lokasi">Lokasi</label>
                         <input class="form-control" type="text" readonly placeholder="Lokasi" name="lokasi" id="lokasi" value="<?= $data['data_barang']['lokasi'] ?>" required>
@@ -66,7 +66,7 @@
                     foreach ($_SESSION['pinjaman'] as $key => $value) : ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><?= $value['judul'] ?></td>
+                            <td><?= $value['nama_barang'] ?></td>
                             <td><a href="<?= BASEURL ?>/peminjaman/hapus/<?= $value['row_id'] ?>" class="badge badge-danger">Hapus</a></td>
                         </tr>
                     <?php endforeach ?>
@@ -83,6 +83,7 @@
 
 
 <!-- Modal -->
+<!-- ketika button pilih barang di click maka akan muncul layer di bawah ini -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">

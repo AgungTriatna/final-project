@@ -1,7 +1,7 @@
 </main> <!-- main -->
 
 </div> <!-- .wrapper -->
-<script src="<?= BASEURL ?>/light/js/jquery.min.js"></script>
+<!-- <script src="<?= BASEURL ?>/light/js/jquery.min.js"></script>
 <script src="<?= BASEURL ?>/light/js/popper.min.js"></script>
 <script src="<?= BASEURL ?>/light/js/moment.min.js"></script>
 <script src="<?= BASEURL ?>/light/js/bootstrap.min.js"></script>
@@ -16,11 +16,11 @@
 <script src="<?= BASEURL ?>/light/js/datamaps-zoomto.js"></script>
 <script src="<?= BASEURL ?>/light/js/datamaps.custom.js"></script>
 <script src="<?= BASEURL ?>/light/js/Chart.min.js"></script>
-<script>
+<script> -->
     /* defind global options */
     Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
     Chart.defaults.global.defaultFontColor = colors.mutedColor;
-</script>
+<!-- </script>
 <script src="<?= BASEURL ?>/light/js/gauge.min.js"></script>
 <script src="<?= BASEURL ?>/light/js/jquery.sparkline.min.js"></script>
 <script src="<?= BASEURL ?>/light/js/apexcharts.min.js"></script>
@@ -222,13 +222,13 @@
     $('#tbl-daftar-barang').DataTable();
     $('#tbl-list-penerbit').DataTable();
     $('#tbl-list-kategori').DataTable();
-</script>
+</script> -->
 
-<script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/responsive/2.2.4/js/dataTables.responsive.min.js"></script> -->
+<!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
 
 <!-- Custom scripts for all pages-->
-<script src="<?= BASEURL ?>/js/sb-admin-2.min.js"></script>
+<!-- <script src="<?= BASEURL ?>/js/sb-admin-2.min.js"></script> -->
 </body>
 
 </html>

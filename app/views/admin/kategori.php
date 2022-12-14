@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Form Tambah Kategori Baru</h3>
+<!-- <h3 class="mb-3 text-center">Form Tambah Kategori Baru</h3>
 
 <div class="card shadow">
     <div class="card-body">
@@ -61,4 +61,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
