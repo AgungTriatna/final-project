@@ -5,27 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="base_url" content="<?= BASEURL ?>">
-    <title><?= APP_NAME ?> - <?= $data['title'] ?></title>
 
-    <!-- Simple bar CSS -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/simplebar.css">
+    <title><?= APP_NAME ?> - Landing</title>
+    <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png">
+
+    <!-- Custom styles for this template-->
+    <link href="<?= BASEURL ?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/386a70e6e1.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
+
+
+    <!-- UI -->
+    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-light.css" id="lightTheme">
+
     <!-- Fonts CSS -->
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <!-- Icons CSS -->
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/feather.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/select2.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/dropzone.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/uppy.min.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/jquery.steps.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/jquery.timepicker.css">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/quill.snow.css">
-    <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/daterangepicker.css">
-    <!-- App CSS -->
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-light.css" id="lightTheme">
-    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-dark.css" id="darkTheme" disabled>
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="vertical  light  ">
