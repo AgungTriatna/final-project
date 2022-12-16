@@ -1,4 +1,4 @@
-<h3 class="text-center mb-5">Input Peminjaman</h3>
+<!-- <h3 class="text-center mb-5">Input Peminjaman</h3>
 
 <div class="card shadow">
     <div class="card-body">
@@ -71,7 +71,7 @@
 
         <button id="simpan-pinjaman" class="btn btn-success">Simpan Pinjaman</button>
 
-        <!-- Modal -->
+        Modal
         <div class="modal fade" id="cekMemberModal" tabindex="-1" role="dialog" aria-labelledby="cekMemberModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -92,4 +92,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
