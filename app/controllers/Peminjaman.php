@@ -31,7 +31,7 @@ class Peminjaman extends Controller
     public function tambah()
     {
         $id_member = $_POST['idmember'];
-        $id_barang = $_POST['data_barang'];
+        $id_barang = $_POST['barang'];
 
         $sudahPinjamBelumKembali = $this->peminjamanModel->pinjamBelumKembali($_POST);
         if ($sudahPinjamBelumKembali > 0) {
