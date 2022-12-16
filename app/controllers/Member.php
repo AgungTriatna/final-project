@@ -2,8 +2,8 @@
 
 class Member extends Controller             //inheritence/pearisan dari class controller
 {
-//property
-    private $peminjamanModel;                  
+    //property
+    private $peminjamanModel;
     private $bukuModel;
     private $barangModel;
     private $userModel;
@@ -75,7 +75,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
             echo 'Harap menggunakan tombol yang ada untuk melihat detail barang';
         }
     }
-    
+
     public function draft($id = 0)
     {
         if ($id) {
@@ -120,7 +120,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
         echo json_encode([$buku, $pinjaman]);
     }
 
-    
+
     public function input_peminjaman()
     {
         $data['title'] = 'Input Peminjaman';
@@ -145,7 +145,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
         $this->view('member/input-peminjaman', $data);
         $this->view('member/footer');
     }
-    
+
     public function input_data()
     {
         $data['title'] = 'Input Data';
@@ -257,6 +257,6 @@ class Member extends Controller             //inheritence/pearisan dari class co
         session_unset();
         session_destroy();
         setcookie('PPI-Login', '', time() - 3600 * 24 * 30, '/');
-        header('Location: ' . BASEURL . '/login');
+        header('Location: ' . BASEURL);
     }
 }

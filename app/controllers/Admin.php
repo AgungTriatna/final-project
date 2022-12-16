@@ -241,7 +241,7 @@ class Admin extends Controller
         header('Location: ' . BASEURL . '/admin/departement');
     }
 
-    
+
     public function hapus_departement($id_departement)
     {
         if (!$id_departement) {
@@ -257,7 +257,7 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/admin/departement');
         }
     }
-    
+
     public function update_departement($id_departement = 0)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -294,6 +294,6 @@ class Admin extends Controller
         session_unset();
         session_destroy();
         setcookie('PPI-Login', '', time() - 3600 * 24 * 30, '/');
-        header('Location: ' . BASEURL . '');
+        header('Location: ' . BASEURL);
     }
 }
