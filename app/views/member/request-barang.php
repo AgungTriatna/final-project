@@ -7,50 +7,51 @@
         <h6>Silahkan pilih barang yang akan di pinjam.</h6>
         <br>
        <!--  <form action="" method="post"> -->
-      <?php if (Flasher::check()) : ?>
-                 <?php $flash = Flasher::flash() ?>
-                 <div class="alert alert-<?= $flash['tipe'] ?> alert-dismissible fade show" role="alert">
-                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                         <span class="sr-only">Close</span>
-                     </button>
-                     <?= $flash['pesan'] ?>
-                 </div>
-             <?php endif; ?>
+    <?php if (Flasher::check()) : ?>
+        <?php $flash = Flasher::flash() ?>
+        <div class="alert alert-<?= $flash['tipe'] ?> alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <?= $flash['pesan'] ?>
+        </div>
+    <?php endif; ?>
+
         <div class="row">
-          <div class="col-sm-12">
-
-                    <div class="form-group">
-                        <label for="waktu">Member</label>
-                      <input type="text" readonly name="nama_member" id="nama_member" class="form-control" value="<?= $data['nama'] ?>">
-                      <input type="hidden" name="id_member" value="<?= $data['id_member'] ?>">
-
-                    </div>
-           <div class="form-group">
-                        <label for="waktu">Lama Waktu</label>
-                        <select class="form-control selectpicker" id="lama_pinjam" name="lama_pinjam" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
-                    <option value="">--- Pilih Waktu ---</option>
-                    <?php foreach ($data['waktu'] as $w) : ?>
-                        <?php if (isset($_SESSION['member_pinjam'])) : ?>
-                            <?php if ($w['waktu'] == $_SESSION['member_pinjam']['lama_pinjam']) : ?>
-                                <option value="<?= $w['waktu'] ?>" selected><?= $w['nama'] ?></option>
-                            <?php else : ?>
-                                <option value="<?= $w['waktu'] ?>"><?= $w['nama'] ?></option>
-                            <?php endif ?>
+          <div class="col-sm-3">
+            <div class="form-group">
+                <label for="waktu">Member</label>
+                <input type="text" readonly name="nama_member" id="nama_member" class="form-control" value="<?= $data['nama'] ?>">
+                <input type="hidden" name="id_member" value="<?= $data['id_member'] ?>">
+            </div>
+            </div>
+            <div class="col-sm-3">
+            <div class="form-group">
+            <label for="waktu">Lama Waktu</label>
+            <select class="form-control selectpicker" id="lama_pinjam" name="lama_pinjam" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <option value="">--- Pilih Waktu ---</option>
+                <?php foreach ($data['waktu'] as $w) : ?>
+                    <?php if (isset($_SESSION['member_pinjam'])) : ?>
+                        <?php if ($w['waktu'] == $_SESSION['member_pinjam']['lama_pinjam']) : ?>
+                            <option value="<?= $w['waktu'] ?>" selected><?= $w['nama'] ?></option>
                         <?php else : ?>
                             <option value="<?= $w['waktu'] ?>"><?= $w['nama'] ?></option>
                         <?php endif ?>
-                    <?php endforeach ?>
-                </select>
-                    </div>
-                  </div>
-            <div class="col-sm-6">
+                    <?php else : ?>
+                        <option value="<?= $w['waktu'] ?>"><?= $w['nama'] ?></option>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </select>
+            </div>
+            </div>
+            <div class="col-sm-3">
 			    <div class="form-group">
                 <label for="nama_barang">Kode Barang</label>
                 <input type="text" readonly placeholder="Kode Barang" id="kode_barang" name="kode_barang" class="form-control">
 				</div>
 			</div>
-			<div class="col-md-4" style="margin-left: -2% padding-right: 5px;">
+			<div class="col-md-3" style="margin-top: 2.5%;">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldraft">
                   Pilih Barang

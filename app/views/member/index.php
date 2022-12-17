@@ -18,7 +18,7 @@
                         <?= $flash['pesan'] ?>
                     </div>
                 <?php endif; ?>
-                <p>Jangan lupa untuk mengembalikan buku pinjaman ya!</p>
+                <p>Jangan lupa untuk mengembalikan barang pinjaman ya!</p>
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
