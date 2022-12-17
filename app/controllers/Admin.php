@@ -2,7 +2,6 @@
 
 class Admin extends Controller
 {
-    // private $bukuModel;
     private $barangModel;
     private $peminjamanModel;
     private $userModel;

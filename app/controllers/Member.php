@@ -3,8 +3,7 @@
 class Member extends Controller             //inheritence/pearisan dari class controller
 {
 //property
-    private $peminjamanModel;                  
-    private $bukuModel;
+    private $peminjamanModel;
     private $barangModel;
     private $userModel;
     private $payload;
@@ -21,7 +20,6 @@ class Member extends Controller             //inheritence/pearisan dari class co
         }
 
         $this->peminjamanModel = $this->model('Peminjaman_model');
-        $this->bukuModel = $this->model('Buku_model');
         $this->userModel = $this->model('User_model');
         $this->barangModel = $this->model('Barang_model');
     }
@@ -34,17 +32,6 @@ class Member extends Controller             //inheritence/pearisan dari class co
         $data['pinjaman'] = $this->peminjamanModel->getPinjamanMember($this->payload->id);
         $this->view('member/header', $data);
         $this->view('member/index', $data);
-        $this->view('member/footer');
-    }
-
-    public function daftar_buku()
-    {
-        $data['title'] = 'Daftar Buku';
-        $data['nama'] = $this->payload->nama;
-        $data['buku'] = $this->bukuModel->getAllBuku();
-
-        $this->view('member/header', $data);
-        $this->view('member/daftar-buku', $data);
         $this->view('member/footer');
     }
 
@@ -117,10 +104,6 @@ class Member extends Controller             //inheritence/pearisan dari class co
         }
     }
 
-    public function ambil_buku()
-    {
-        echo json_encode($this->bukuModel->getDetailBuku($_POST['id']));
-    }
     public function ambil_barang()
     {
         echo json_encode($this->barangModel->getDetailBarang($_POST['id']));
@@ -136,17 +119,6 @@ class Member extends Controller             //inheritence/pearisan dari class co
         $this->view('member/daftar-pinjaman', $data);
         $this->view('member/footer');
     }
-
-    public function ambil_pinjaman()
-    {
-        $id_pinjaman = $_POST['id'];
-
-        $buku = $this->peminjamanModel->getPinjamanBuku($id_pinjaman);
-        $pinjaman = $this->peminjamanModel->getDetailPinjaman($id_pinjaman);
-
-        echo json_encode([$buku, $pinjaman]);
-    }
-
     
     public function input_peminjaman()
     {
