@@ -217,30 +217,30 @@ class Admin extends Controller
         }
     }
 
-    public function input_peminjaman()
-    {
-        $data['title'] = 'Input Peminjaman';
-        $data['nama'] = $this->payload->nama;
-        $data['data_barang'] = $this->barangModel->getAllBarang();
-        $data['waktu'] = [
-            [
-                'waktu' => 3,
-                'nama' => '3 Hari'
-            ],
-            [
-                'waktu' => 7,
-                'nama' => '7 Hari'
-            ],
-            [
-                'waktu' => 14,
-                'nama' => '14 Hari'
-            ]
-        ];
+    // public function input_peminjaman()
+    // {
+    //     $data['title'] = 'Input Peminjaman';
+    //     $data['nama'] = $this->payload->nama;
+    //     $data['data_barang'] = $this->barangModel->getAllBarang();
+    //     $data['waktu'] = [
+    //         [
+    //             'waktu' => 3,
+    //             'nama' => '3 Hari'
+    //         ],
+    //         [
+    //             'waktu' => 7,
+    //             'nama' => '7 Hari'
+    //         ],
+    //         [
+    //             'waktu' => 14,
+    //             'nama' => '14 Hari'
+    //         ]
+    //     ];
 
-        $this->view('admin/header', $data);
-        $this->view('admin/input-peminjaman', $data);
-        $this->view('admin/footer');
-    }
+    //     $this->view('admin/header', $data);
+    //     $this->view('admin/input-peminjaman', $data);
+    //     $this->view('admin/footer');
+    // }
 
     public function daftar_pinjaman()
     {

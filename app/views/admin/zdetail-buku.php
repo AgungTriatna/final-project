@@ -1,4 +1,4 @@
-<h3 class="mb-3">Detail Buku</h3>
+<!-- <h3 class="mb-3">Detail Buku</h3>
 
 <div class="row">
     <div class="col-sm-6">
@@ -18,4 +18,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
