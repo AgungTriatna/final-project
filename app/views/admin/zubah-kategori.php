@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Form Ubah Kategori</h3>
+<!-- <h3 class="mb-3 text-center">Form Ubah Kategori</h3>
 
 <div class="card shadow">
     <div class="card-body">
@@ -19,4 +19,4 @@
             <a href="<?= BASEURL ?>/admin/kategori" class="btn btn-warning">Batal</a>
         </form>
     </div>
-</div>
+</div> -->

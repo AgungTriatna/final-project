@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Form Ubah Penerbit</h3>
+<!-- <h3 class="mb-3 text-center">Form Ubah Penerbit</h3>
 
 <div class="card shadow">
     <div class="card-body">
@@ -23,4 +23,4 @@
             <a href="<?= BASEURL ?>/admin/penerbit" class="btn btn-warning">Batal</a>
         </form>
     </div>
-</div>
+</div> -->

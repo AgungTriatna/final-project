@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Form Ubah Buku</h3>
+<!-- <h3 class="mb-3 text-center">Form Ubah Buku</h3>
 
 <div class="card shadow">
     <div class="card-body">
@@ -53,4 +53,4 @@
             <a href="<?= BASEURL ?>/admin/daftar-buku" class="btn btn-warning">Batal</a>
         </form>
     </div>
-</div>
+</div> -->
