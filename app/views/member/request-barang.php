@@ -50,7 +50,7 @@
                 <input type="text" readonly placeholder="Kode Barang" id="kode_barang" name="kode_barang" class="form-control">
 				</div>
 			</div>
-			<div class="col-md-4" style="margin-left: -2% padding-right:5px;">
+			<div class="col-md-4" style="margin-left: -2% padding-right: 5px;">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldraft">
                   Pilih Barang
