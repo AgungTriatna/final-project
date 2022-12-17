@@ -13,10 +13,10 @@ class Admin extends Controller
         if (SessionManager::checkSession()) {
             $this->payload = SessionManager::getCurrentSession();
             if ($this->payload->role != 1) {
-                header('Location: ' . BASEURL . '/login');
+                header('Location: ' . BASEURL);
             }
         } else {
-            header('Location: ' . BASEURL . '/login');
+            header('Location: ' . BASEURL);
         }
 
         $this->barangModel = $this->model('Barang_model');

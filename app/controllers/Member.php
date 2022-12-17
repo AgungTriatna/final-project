@@ -14,10 +14,10 @@ class Member extends Controller             //inheritence/pearisan dari class co
         if (SessionManager::checkSession()) {
             $this->payload = SessionManager::getCurrentSession();
             if ($this->payload->role != 2) {
-                header('Location: ' . BASEURL . '/login');
+                header('Location: ' . BASEURL);
             }
         } else {
-            header('Location: ' . BASEURL . '/login');
+            header('Location: ' . BASEURL);
         }
 
         $this->peminjamanModel = $this->model('Peminjaman_model');
