@@ -1,22 +1,32 @@
-<h3 class="text-center mb-5">Input Peminjaman</h3>
-
 <div class="card shadow">
     <div class="card-body">
-        <div class="form-group row">
-            <label for="id-member" class="col-sm-2 col-form-label">ID Member</label>
-            <div class="col-sm-2">
-                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>"     name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+        <h3>Management Inventory System</h3>
+        <h6>Advics Manufacturing Indonesia PT.</h6>
+        <hr>
+        <h6>Silahkan pilih barang yang akan di pinjam.</h6>
+        <br>
+        <form action="<?= BASEURL ?>/request/tambah_peminjaman" method="post">
+         <div class="form-group row">
+            <label for="id-member" class="col-sm-2 col-form-label">Pilih Member</label>
+            <div class="col-sm-4">
+                <select name="id_member" class="form-control" required>
+                    <option value="">--Pilih Member--</option>
+                    <?php foreach ($data['member'] as $m) : ?>
+                         <option value="<?= $m['id'] ?>"><?= $m['nama'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div class="col-sm-4">
-                <button id="cek-member" class="btn btn-info mt-3 mt-sm-0" data-toggle="modal" data-target="#cekMemberModal">Cek Member</button>
+               
             </div>
         </div>
+       
 
         <div class="form-group row">
             <label for="lama-pinjam" class="col-sm-2 col-form-label">Lama Pinjam</label>
             <div class="col-sm-4">
-                <select class="form-control selectpicker" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
-                    <option value="">--- Pilih waktu ---</option>
+                <select class="form-control selectpicker" id="lama_pinjam" name="lama_pinjam" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                    <option value="">--- Pilih Waktu ---</option>
                     <?php foreach ($data['waktu'] as $w) : ?>
                         <?php if (isset($_SESSION['member_pinjam'])) : ?>
                             <?php if ($w['waktu'] == $_SESSION['member_pinjam']['lama_pinjam']) : ?>
@@ -33,29 +43,34 @@
         </div>
 
         <div class="form-group row">
-            <label for="buku" class="col-sm-2 col-form-label">Buku</label>
-            <div class="col-sm-4">
-                <select class="form-control selectpicker" id="buku" data-live-search="true" name="buku" required>
-                    <option value="">--- Pilih buku ---</option>
-                    <?php foreach ($data['buku'] as $b) : ?>
-                        <option value="<?= $b['id'] ?>"><?= $b['judul'] ?></option>
+            <label for="buku" class="col-sm-2 col-form-label">Nama Barang</label>
+            <div class="col-sm-5">
+                <div class="input-group">
+          
+                <select class="form-control selectpicker" id="id_barang" data-live-search="true" name="id_barang">
+                    <option value="">--- Pilih Barang ---</option>
+                    <?php foreach ($data['barang'] as $br) : ?>
+                        <option value="<?= $br['id'] ?>"><?= $br['nama_barang'] ?></option>
                     <?php endforeach ?>
                 </select>
+                <div class="input-group-btn">
+                <a class="btn btn-primary" onclick="tambah_barang()" style="color: white;">Tambah Peminjaman</a>
             </div>
         </div>
-
-        <button id="tambah-peminjaman" class="btn btn-primary">Tambah Peminjaman</button>
-
+            </div>
+        </div>
+ <div id="data_brg">
         <table class="table mt-4">
             <thead class="thead-light">
                 <tr>
-                    <th>No</th>
-                    <th>Judul Buku</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody id="tabel-ajax">
-                <?php if (isset($_SESSION['pinjaman'])) : ?>
+                <input type="hidden" id="nomor" class="form-control" value="1" readonly>
+               <!--  <?php if (isset($_SESSION['pinjaman'])) : ?>
                     <?php $i = 1;
                     foreach ($_SESSION['pinjaman'] as $key => $value) : ?>
                         <tr>
@@ -64,32 +79,38 @@
                             <td><a href="<?= BASEURL ?>/peminjaman/hapus/<?= $value['row_id'] ?>" class="badge badge-danger">Hapus</a></td>
                         </tr>
                     <?php endforeach ?>
-                <?php endif ?>
+                <?php endif ?> -->
 
             </tbody>
         </table>
-
-        <button id="simpan-pinjaman" class="btn btn-success">Simpan Pinjaman</button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="cekMemberModal" tabindex="-1" role="dialog" aria-labelledby="cekMemberModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cekMemberModalLabel">Cek Member</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h5 id="ada"></h5>
-                        <p id="nama-member"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
+        <button type="submit" class="btn btn-success">Simpan Pinjaman</button>
+</form>
     </div>
 </div>
+<script type="text/javascript">
+     function tambah_barang() {
+        var id_barang = $('#id_barang').val();
+       var nomor = $('#nomor').val();
+        $.ajax({
+            url:"<?= BASEURL ?>/request/data_barang",
+            data:{id_barang: id_barang, 
+                nomor: nomor },
+            method:"post",
+            success: function(html)
+            {
+              $("#data_brg").append(html);
+              $('#id_barang').val('');
+               $('#nomor').val(nomor * 1 + 1 * 1);
+            }
+        });
+    }
+
+     function hapus(no) {
+        var tanya = confirm("Apakah Anda Akan Menghapus Data Ini ?");
+       if(tanya === true) {
+          $('.row-keranjang'+no).closest('.row-keranjang'+no).remove();
+          $('#tbl_brg'+no).closest('#tbl_brg'+no).remove();
+      }
+        }
+</script>

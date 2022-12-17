@@ -15,7 +15,6 @@
             </ul>
             <div class="card-body">
                 <a class ="btn btn-primary" href="<?= BASEURL ?>/admin/daftar-barang" class="card-link">Kembali</a>
-                <!-- <a href="<?= BASEURL ?>/admin/daftar-barang" class="card-link">Kembali</a> -->
             </div>
         </div>
     </div>

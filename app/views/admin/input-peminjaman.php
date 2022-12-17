@@ -1,21 +1,23 @@
-<h3 class="text-center mb-5">Input Peminjaman</h3>
+<h3 class="text-center mb-5">Input PeminjamanN</h3>
 
 <div class="card shadow">
     <div class="card-body">
         <div class="form-group row">
-            <label for="id-member" class="col-sm-2 col-form-label">ID Member</label>
+            <label for="id-member" class="col-sm-2 col-form-label">Pilih Member</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>" name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <select name="id-member" class="form-control">
+                    <option value="">==PILIH MEMBER==</option>
+                </select>
             </div>
             <div class="col-sm-4">
-                <button id="cek-member" class="btn btn-info mt-3 mt-sm-0" data-toggle="modal" data-target="#cekMemberModal">Cek Member</button>
+               
             </div>
         </div>
 
         <div class="form-group row">
             <label for="lama-pinjam" class="col-sm-2 col-form-label">Lama Pinjam</label>
             <div class="col-sm-4">
-                <select class="form-control  selectpicker" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <select class="form-control" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
                     <option value="">--- Pilih waktu ---</option>
                     <?php foreach ($data['waktu'] as $w) : ?>
                         <?php if (isset($_SESSION['member_pinjam'])) : ?>
@@ -33,7 +35,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="barang" class="col-sm-2 col-form-label">Barang</label>
+            <label for="data_barang" class="col-sm-2 col-form-label">Barang</label>
             <div class="col-sm-4">
                 <select class="form-control" id="barang" data-live-search="true" name="barang" required>
                     <option value="">--- Pilih barang ---</option>
@@ -68,7 +70,7 @@
                 <?php endif ?>
 
             </tbody>
-        </table>    
+        </table>
 
         <button id="simpan-pinjaman" class="btn btn-success">Simpan Pinjaman</button>
 

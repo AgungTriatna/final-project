@@ -12,16 +12,28 @@ class Peminjaman_model
 
     public function getAllPinjaman()
     {
-        $this->db->query("SELECT pinjaman.*, users.nama FROM pinjaman 
-        JOIN users ON pinjaman.id_member = users.id
-        ORDER BY tanggal_pinjam DESC");
+        $this->db->query("SELECT * FROM pinjaman 
+        JOIN users ON pinjaman.id_member = users.id WHERE status_pinjam!='Ditolak'
+        ORDER BY id_pinjaman DESC");
+        return $this->db->resultSet();
+    }
+
+    public function getAllUser()
+    {
+        $this->db->query("SELECT * FROM users WHERE role='2'");
+        return $this->db->resultSet();
+    }
+
+    public function getAllBarang()
+    {
+        $this->db->query("SELECT * FROM data_barang");
         return $this->db->resultSet();
     }
 
     public function pinjamBelumKembali($data)
     {
         $id_member = $data['idmember'];
-        $id_barang = $data['barang'];
+        $id_barang = $data['data_barang'];
         $sql = "SELECT pinjaman.id_pinjaman FROM pinjaman
                 JOIN detail_pinjaman ON pinjaman.id_pinjaman = detail_pinjaman.id_pinjaman
                 WHERE id_member = $id_member AND id_barang = $id_barang AND tanggal_kembali IS NULL";
@@ -110,10 +122,32 @@ class Peminjaman_model
 
     public function getPinjamanMember($id_member)
     {
-        $sql = "SELECT id_pinjaman, tanggal_pinjam, lama_pinjam, tanggal_kembali FROM pinjaman 
+        $sql = "SELECT * FROM pinjaman 
         WHERE id_member = '$id_member'
-        ORDER BY tanggal_pinjam DESC";
+        ORDER BY id_pinjaman DESC";
         $this->db->query($sql);
+        return $this->db->resultSet();
+    }
+
+    public function getDatabarang($idbarang)
+    {
+        $sql = "SELECT * FROM data_barang 
+        WHERE id = '$idbarang'";
+        $this->db->query($sql);
+        return $this->db->resultSet();
+    }
+
+     public function getDtPinjaman($idpinjaman)
+    {
+        $sql = "SELECT * FROM pinjaman 
+        WHERE id_pinjaman = '$idpinjaman'";
+        $this->db->query($sql);
+        return $this->db->resultSet();
+    }
+
+    public function getDetPinjaman($id)
+    {
+        $this->db->query("SELECT * FROM tb_request_barang INNER JOIN data_barang ON data_barang.id=tb_request_barang.id_barang WHERE tb_request_barang.id_pinjaman = '$id'");
         return $this->db->resultSet();
     }
 }

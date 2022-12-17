@@ -13,10 +13,10 @@ class Admin extends Controller
         if (SessionManager::checkSession()) {
             $this->payload = SessionManager::getCurrentSession();
             if ($this->payload->role != 1) {
-                header('Location: ' . BASEURL);
+                header('Location: ' . BASEURL . '/login');
             }
         } else {
-            header('Location: ' . BASEURL);
+            header('Location: ' . BASEURL . '/login');
         }
 
         $this->barangModel = $this->model('Barang_model');
@@ -36,6 +36,40 @@ class Admin extends Controller
         $this->view('admin/header', $data);
         $this->view('admin/index', $data);
         $this->view('admin/footer');
+    }
+
+    public function lihat_pinjaman($id = 0)
+    {
+        if ($id) {
+            $data['title'] = 'Detail Pinjaman';
+            $data['nama'] = $this->payload->nama;
+            $data['daftar_pinjaman'] = $this->peminjamanModel->getDtPinjaman($id);
+            $data['data_barang'] = $this->peminjamanModel->getDetPinjaman($id);
+            $this->view('admin/header', $data);
+            $this->view('admin/detail-pinjaman', $data);
+            $this->view('admin/footer');
+        } else {
+            echo 'Harap menggunakan tombol yang ada untuk melihat detail barang';
+        }
+    }
+
+     public function setuju($id = 0)
+    {
+        if ($id) {
+            $this->userModel->setujuiPinjaman($id);
+             Flasher::setFlash('Request berhasil disetujui', 'success');
+             header('Location: ' . BASEURL . '/admin/daftar-pinjaman');
+        }
+    }
+
+    public function ditolak()
+    {
+        $insert = $this->userModel->tolakPinjaman($_POST);
+        if ($insert>0) {
+            Flasher::setFlash('Request berhasil ditolak', 'success');
+            header('Location: ' . BASEURL . '/admin/daftar-pinjaman');
+            exit();
+        }
     }
 
     public function daftar_barang()
@@ -241,7 +275,7 @@ class Admin extends Controller
         header('Location: ' . BASEURL . '/admin/departement');
     }
 
-
+    
     public function hapus_departement($id_departement)
     {
         if (!$id_departement) {
@@ -257,7 +291,7 @@ class Admin extends Controller
             header('Location: ' . BASEURL . '/admin/departement');
         }
     }
-
+    
     public function update_departement($id_departement = 0)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -294,6 +328,6 @@ class Admin extends Controller
         session_unset();
         session_destroy();
         setcookie('PPI-Login', '', time() - 3600 * 24 * 30, '/');
-        header('Location: ' . BASEURL);
+        header('Location: ' . BASEURL . '');
     }
 }

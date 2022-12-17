@@ -5,13 +5,13 @@ class Home extends Controller {
 
     function __construct()
     {
-        $this->model = $this->model('Barang_model');
+        $this->model = $this->model('Buku_model');
     }
 
     public function index()
     {
-        $data['nama_barang'] = 'Home';
-        $data['data_barang'] = $this->model->getAllBarang();
+        $data['judul'] = 'Home';
+        $data['buku'] = $this->model->getAllBuku();
         $data['page'] = 'home';
 
         $this->view('home/index', $data);

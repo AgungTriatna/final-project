@@ -30,7 +30,7 @@ class Login extends Controller
     public function auth()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            header('Location: ' . BASEURL . '/login');
+            header('Location: ' . BASEURL . '');
         }
 
         $username = $_POST['username'];
@@ -40,7 +40,7 @@ class Login extends Controller
 
         if (!$dbUser) {
             Flasher::setFlash('Username atau password salah.', 'danger');
-            header('Location: ' . BASEURL . '/login');
+            header('Location: ' . BASEURL . '');
         }
 
         if (password_verify($password, $dbUser['password'])) {
@@ -60,7 +60,7 @@ class Login extends Controller
             }
         } else {
             Flasher::setFlash('Username atau password salah.', 'danger');
-            header('Location: ' . BASEURL . '/login');
+            header('Location: ' . BASEURL . '');
         }
     }
 }

@@ -31,7 +31,7 @@ class Peminjaman extends Controller
     public function tambah()
     {
         $id_member = $_POST['idmember'];
-        $id_barang = $_POST['barang'];
+        $id_barang = $_POST['data_barang'];
 
         $sudahPinjamBelumKembali = $this->peminjamanModel->pinjamBelumKembali($_POST);
         if ($sudahPinjamBelumKembali > 0) {
@@ -161,6 +161,21 @@ class Peminjaman extends Controller
         } else {
             $this->peminjamanModel->updatePinjaman($id_pinjaman, $tanggal_kembali, 0);
             echo json_encode('tidak denda');
+        }
+    }
+
+     public function tambah_peminjaman()
+    {
+            $data['id_member'] = $_POST["id_member"];
+            $data['lama_pinjam'] = $_POST["lama_pinjam"];
+            $data['buku'] = $_POST["buku"];
+
+        $insert = $this->barangModel->tambahRequest($data);
+    
+            if ($insert>0) {
+            Flasher::setFlash('Request berhasil ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/member/request-barang');
+            exit();
         }
     }
 }

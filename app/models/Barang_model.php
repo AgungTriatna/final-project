@@ -16,6 +16,12 @@ class Barang_model
         return $this->db->resultSet();
     }
 
+    public function getBarang($idpinjam)
+    {
+         $this->db->query("SELECT * FROM detail_pinjaman INNER JOIN data_barang ON data_barang.id=detail_pinjaman.id_barang WHERE id_pinjaman = '$idpinjam'");
+        return $this->db->resultSet();
+    }
+
     public function getDetailBarang($id)
     {
         $this->db->query("SELECT * FROM data_barang WHERE id = '$id'");
@@ -120,4 +126,62 @@ class Barang_model
         $this->db->execute();
         return 1;
     }
+
+     public function tambahRequest($data)
+    {
+
+        $id_barang = $data['id_barang'];
+        $jumlah_brg = $data['jumlah_brg'];
+        $id_pinjaman = $data['id_pinjaman'];
+
+        $query = "INSERT INTO tb_request_barang
+        VALUES ('', :id_pinjaman , :id_barang, :jumlah_brg)";
+
+        $this->db->query($query);
+        $this->db->bind('id_pinjaman', $id_pinjaman);
+        $this->db->bind('id_barang', $id_barang);
+        $this->db->bind('jumlah_brg', $jumlah_brg);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+
+     public function tambahPeminjaman($data)
+    {
+
+        $id_member = $data['id_member'];
+        $lama_pinjam = $data['lama_pinjam'];
+
+        $query = "INSERT INTO pinjaman
+        VALUES ('', :id_member, :tanggal_transaksi , null, :lama_pinjam, null, null, :status_pinjam, null)";
+
+        $this->db->query($query);
+        $this->db->bind('id_member', $id_member);
+        $this->db->bind('tanggal_transaksi', date("Y-m-d"));
+        $this->db->bind('lama_pinjam', $lama_pinjam);
+        $this->db->bind('status_pinjam', 'Sedang Diproses');
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function getDataPinjam($idmember,$lamawaktu)
+    {
+        $sql = "SELECT id_pinjaman FROM pinjaman 
+        WHERE id_member = '$idmember' AND lama_pinjam = '$lamawaktu' GROUP BY id_pinjaman DESC LIMIT 1";
+        $this->db->query($sql);
+        return $this->db->resultSet();
+    }
+
+    public function getPinjam()
+    {
+        $sql = "SELECT id_pinjaman FROM pinjaman";
+        $this->db->query($sql);
+        return $this->db->resultSet();
+    }
+
+    
 }

@@ -173,4 +173,35 @@ class User_model
         $this->db->bind('id', $id);
         $this->db->execute();
     }
+
+     public function setujuiPinjaman($id)
+    {
+
+
+        $query = "UPDATE pinjaman SET status_pinjam='Diterima', 
+        tanggal_pinjam = CURDATE(), tanggal_kembali=CURDATE()+INTERVAL lama_pinjam DAY WHERE id_pinjaman='$id'";
+
+        $this->db->query($query);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function tolakPinjaman($data)
+    {
+
+        $id_pinjaman = $data['id_pinjaman'];
+        $catatan_ditolak = $data['catatan_ditolak'];
+
+        $query = "UPDATE pinjaman SET status_pinjam='Ditolak', 
+        catatan_ditolak= :catatan_ditolak WHERE id_pinjaman= :id_pinjaman";
+
+        $this->db->query($query);
+        $this->db->bind('catatan_ditolak', $catatan_ditolak);
+        $this->db->bind('id_pinjaman', $id_pinjaman);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

@@ -9,13 +9,6 @@
     <title><?= APP_NAME ?> - Landing</title>
     <link rel="icon" href="<?= BASEURL ?>/favicon.ico" type="image/png">
 
-    <!-- Custom styles for this template-->
-    <link href="<?= BASEURL ?>/css/sb-admin-2.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/386a70e6e1.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.4/css/responsive.bootstrap4.min.css">
-
 
     <!-- UI -->
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/app-light.css" id="lightTheme">
@@ -25,6 +18,10 @@
 
     <!-- Icons CSS -->
     <link rel="stylesheet" href="<?= BASEURL ?>/light/css/feather.css">
+
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="<?= BASEURL ?>/light/css/daterangepicker.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body class="vertical  light  ">
@@ -85,19 +82,19 @@
                 <ul class="navbar-nav flex-fill w-100 mb-2">
 
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= BASEURL ?>/member/daftar-pinjaman">
+                        <a class="nav-link" href="<?= BASEURL ?>/member">
                             <i class="fe fe-grid fe-16"></i>
                             <span class="ml-3 item-text">Daftar Pinjaman</span>
                         </a>
                     </li>
 
 
-                    <li class="nav-item w-100">
-                        <a class="nav-link" href="<?= BASEURL ?>/member/input-peminjaman">
+                   <!--  <li class="nav-item w-100">
+                        <a class="nav-link" href="<?= BASEURL ?>/member/input_peminjaman">
                             <i class="fe fe-credit-card fe-16"></i>
-                            <span class="ml-3 item-text">Input Peminjaman</span>
+                            <span class="ml-3 item-text">Request Barang</span>
                         </a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item w-100">
                         <a class="nav-link" href="<?= BASEURL ?>/member/request-barang">

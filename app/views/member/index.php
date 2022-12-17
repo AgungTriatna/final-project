@@ -23,42 +23,28 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>Tanggal Pinjam</th>
+                            <th>Tanggal Transaksi</th>
                             <th>Lama Pinjam</th>
                             <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1;
                         foreach ($data['pinjaman'] as $p) : ?>
-                            <?php
-                            $tgl_skrg = date('Y-m-d');
-                            $datediff = strtotime($tgl_skrg) - strtotime($p['tanggal_pinjam']);
-                            $bedahari = abs(round($datediff / (60 * 60 * 24)));
-
-                            if ($bedahari > $p['lama_pinjam'] && $p['tanggal_kembali'] == NULL) : ?>
-                                <tr class="bg-warning">
-                                    <td><?= $i++ ?></td>
-                                    <td><?= date('d M Y', strtotime($p['tanggal_pinjam'])) ?></td>
-                                    <td><?= $p['lama_pinjam'] ?> Hari</td>
-                                    <?php if ($p['tanggal_kembali'] == NULL) : ?>
-                                        <td class="text-danger">Belum Dikembalikan</td>
-                                    <?php else : ?>
-                                        <td class="text-success">Sudah Dikembalikan</td>
-                                    <?php endif ?>
-                                </tr>
-                            <?php else : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
-                                    <td><?= date('d M Y', strtotime($p['tanggal_pinjam'])) ?></td>
+                                    <td><?= date('d M Y', strtotime($p['tanggal_transaksi'])) ?></td>
                                     <td><?= $p['lama_pinjam'] ?> Hari</td>
-                                    <?php if ($p['tanggal_kembali'] == NULL) : ?>
-                                        <td class="text-danger">Belum Dikembalikan</td>
-                                    <?php else : ?>
-                                        <td class="text-success">Sudah Dikembalikan</td>
+                                    <?php if ($p['status_pinjam'] == "Sedang Diproses") : ?>
+                                        <td class="text-warning">Pinjaman Diproses</td>
+                                    <?php elseif ($p['status_pinjam'] == "Ditolak") : ?>
+                                        <td class="text-danger">Pinjaman Ditolak</td>
+                                        <?php else : ?>
+                                             <td class="text-success">Pinjaman Diterima</td>
                                     <?php endif ?>
+                                     <td><a href="<?= BASEURL ?>/member/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info"title="Check Detail Data" style="color:white;">Check</a></td>
                                 </tr>
-                            <?php endif; ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -66,3 +52,38 @@
         </div>
     </div>
 </div>
+
+<!-- modal detail -->
+<?php $i = 1;
+foreach ($data['pinjaman'] as $p) : ?>
+<div class="modal fade" id="modaldetail<?= $p['id_pinjaman'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-m">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Pinjaman</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>No</th>
+                <th>Kode Barang</th>
+                <th>Nama Barang</th>
+                <th>Tipe Barang</th>
+              </tr>
+            </thead>
+            <tbody>
+           
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <?php endforeach ?>
