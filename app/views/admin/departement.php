@@ -37,7 +37,7 @@
             </div>
         <?php endif; ?>
 
-        <table id="tbl-list-kategori" class="table dt-responsive nowrap" style="width: 100%;">
+        <table id="tbl-list-departement" class="table dt-responsive nowrap" style="width: 100%;">
             <thead class="thead-dark text-center">
                 <tr>
                     <th>No</th>

@@ -5,7 +5,7 @@
         <div class="form-group row">
             <label for="id-member" class="col-sm-2 col-form-label">ID Member</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>"     name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
+                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>" name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
             </div>
             <div class="col-sm-4">
                 <button id="cek-member" class="btn btn-info mt-3 mt-sm-0" data-toggle="modal" data-target="#cekMemberModal">Cek Member</button>

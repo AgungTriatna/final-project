@@ -25,7 +25,8 @@
 <script src="https://cdn.datatables.net/responsive/2.2.4/js/responsive.bootstrap4.min.js"></script>
 <script type="text/javascript">
     $('#tbl-daftar-pinjaman').DataTable();
-    $('#tbl-daftar-buku').DataTable();
+    $('#tbl-daftar-barang').DataTable();
+    $('#tbl-request-barang').DataTable();
 </script>
 <!-- Custom scripts for all pages-->
 <script src="<?= BASEURL ?>/js/sb-admin-2.min.js"></script>
