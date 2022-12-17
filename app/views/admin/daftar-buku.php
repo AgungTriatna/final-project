@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Form Tambah Buku Baru</h3>
+<!-- <h3 class="mb-3 text-center">Form Tambah Buku Baru</h3>
 <div class="card shadow">
     <div class="card-body">
         <form action="<?= BASEURL ?>/admin/tambah_buku" method="post">
@@ -99,4 +99,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->

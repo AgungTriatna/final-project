@@ -1,93 +1,82 @@
-<h3 class="text-center mb-5">Input Peminjaman</h3>
+<h3>Daftar Pinjaman Barang</h3>
+<hr>
 
 <div class="card shadow">
     <div class="card-body">
-        <div class="form-group row">
-            <label for="id-member" class="col-sm-2 col-form-label">ID Member</label>
-            <div class="col-sm-2">
-                <input type="number" class="form-control" id="id-member" value="<?php echo isset($_SESSION['member_pinjam']) ? $_SESSION['member_pinjam']['id_member'] : '' ?>"     name="idmember" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
-            </div>
-            <div class="col-sm-4">
-                <button id="cek-member" class="btn btn-info mt-3 mt-sm-0" data-toggle="modal" data-target="#cekMemberModal">Cek Member</button>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="lama-pinjam" class="col-sm-2 col-form-label">Lama Pinjam</label>
-            <div class="col-sm-4">
-                <select class="form-control selectpicker" id="lama-pinjam" name="waktu" required <?php echo isset($_SESSION['member_pinjam']) ? 'disabled' : '' ?>>
-                    <option value="">--- Pilih waktu ---</option>
-                    <?php foreach ($data['waktu'] as $w) : ?>
-                        <?php if (isset($_SESSION['member_pinjam'])) : ?>
-                            <?php if ($w['waktu'] == $_SESSION['member_pinjam']['lama_pinjam']) : ?>
-                                <option value="<?= $w['waktu'] ?>" selected><?= $w['nama'] ?></option>
-                            <?php else : ?>
-                                <option value="<?= $w['waktu'] ?>"><?= $w['nama'] ?></option>
-                            <?php endif ?>
-                        <?php else : ?>
-                            <option value="<?= $w['waktu'] ?>"><?= $w['nama'] ?></option>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="buku" class="col-sm-2 col-form-label">Buku</label>
-            <div class="col-sm-4">
-                <select class="form-control selectpicker" id="buku" data-live-search="true" name="buku" required>
-                    <option value="">--- Pilih buku ---</option>
-                    <?php foreach ($data['buku'] as $b) : ?>
-                        <option value="<?= $b['id'] ?>"><?= $b['judul'] ?></option>
-                    <?php endforeach ?>
-                </select>
-            </div>
-        </div>
-
-        <button id="tambah-peminjaman" class="btn btn-primary">Tambah Peminjaman</button>
-
-        <table class="table mt-4">
+        <p>Daftar pinjaman kamu, jangan lupa dikembalikan ya supaya tidak terkena denda!</p>
+        <table id="tbl-daftar-pinjaman" class="table dt-responsive nowrap" style="width: 100%;">
             <thead class="thead-light">
                 <tr>
                     <th>No</th>
-                    <th>Judul Buku</th>
+                    <th>Tanggal Pinjam</th>
+                    <th>Lama Pinjam</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tbody id="tabel-ajax">
-                <?php if (isset($_SESSION['pinjaman'])) : ?>
-                    <?php $i = 1;
-                    foreach ($_SESSION['pinjaman'] as $key => $value) : ?>
+            <tbody>
+                <?php $i = 1;
+                foreach ($data['pinjaman'] as $p) : ?>
+                    <?php
+                    $tgl_skrg = date('Y-m-d');
+                    $datediff = strtotime($tgl_skrg) - strtotime($p['tanggal_pinjam']);
+                    $bedahari = abs(round($datediff / (60 * 60 * 24)));
+
+                    if ($bedahari > $p['lama_pinjam'] && $p['tanggal_kembali'] == NULL) : ?>
+                        <tr class="bg-warning">
+                            <td><?= $i++ ?></td>
+                            <td><?= date('d M Y', strtotime($p['tanggal_pinjam'])) ?></td>
+                            <td><?= $p['lama_pinjam'] ?> Hari</td>
+                            <?php if ($p['tanggal_kembali'] == NULL) : ?>
+                                <td class="text-danger">Belum Dikembalikan</td>
+                            <?php else : ?>
+                                <td class="text-success">Sudah Dikembalikan</td>
+                            <?php endif ?>
+                            <td>
+                                <a href="#" class="badge badge-info btn-detail-pinjaman" data-id="<?= $p['id_pinjaman'] ?>" data-toggle="modal" data-target="#detailPinjamanModal">Detail</a>
+                            </td>
+                        </tr>
+                    <?php else : ?>
                         <tr>
                             <td><?= $i++ ?></td>
-                            <td><?= $value['judul'] ?></td>
-                            <td><a href="<?= BASEURL ?>/peminjaman/hapus/<?= $value['row_id'] ?>" class="badge badge-danger">Hapus</a></td>
+                            <td><?= date('d M Y', strtotime($p['tanggal_pinjam'])) ?></td>
+                            <td><?= $p['lama_pinjam'] ?> Hari</td>
+                            <?php if ($p['tanggal_kembali'] == NULL) : ?>
+                                <td class="text-danger">Belum Dikembalikan</td>
+                            <?php else : ?>
+                                <td class="text-success">Sudah Dikembalikan</td>
+                            <?php endif ?>
+                            <td>
+                                <a href="#" class="badge badge-info btn-detail-pinjaman" data-id="<?= $p['id_pinjaman'] ?>" data-toggle="modal" data-target="#detailPinjamanModal">Detail</a>
+                            </td>
                         </tr>
-                    <?php endforeach ?>
-                <?php endif ?>
-
+                    <?php endif; ?>
+                <?php endforeach ?>
             </tbody>
         </table>
-
-        <button id="simpan-pinjaman" class="btn btn-success">Simpan Pinjaman</button>
+        </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="cekMemberModal" tabindex="-1" role="dialog" aria-labelledby="cekMemberModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="cekMemberModalLabel">Cek Member</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h5 id="ada"></h5>
-                        <p id="nama-member"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+        <div class="modal fade" id="detailPinjamanModal" tabindex="-1" role="dialog" aria-labelledby="detailPinjamanModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailPinjamanModalLabel">Detail Pinjaman</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>ID Pinjaman : <span id="id-pinjaman"></span></h5>
+                    <p>Tanggal kembali: <span id="tanggal-kembali"></span></p>
+                    <p>Denda: <span id="denda"></span></p>
+                    <p>Daftar b: </p>
+                    <ol id="daftar-barang">
+
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
 {
     //property
     private $peminjamanModel;
-    private $bukuModel;
+    // private $bukuModel;
     private $barangModel;
     private $userModel;
     private $payload;
@@ -21,7 +21,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
         }
 
         $this->peminjamanModel = $this->model('Peminjaman_model');
-        $this->bukuModel = $this->model('Buku_model');
+        // $this->bukuModel = $this->model('Buku_model');
         $this->userModel = $this->model('User_model');
         $this->barangModel = $this->model('Barang_model');
     }
@@ -32,7 +32,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
         $data['id_member'] = $this->payload->id;
         $data['nama'] = $this->payload->nama;
         $data['pinjaman'] = $this->peminjamanModel->getPinjamanMember($this->payload->id);
-        $data['buku'] = $this->bukuModel->getAllBuku();
+        // $data['buku'] = $this->bukuModel->getAllBuku();
         $data['data_barang'] = $this->barangModel->getAllBarang();
 
         $this->view('member/header', $data);
@@ -125,7 +125,7 @@ class Member extends Controller             //inheritence/pearisan dari class co
     {
         $data['title'] = 'Input Peminjaman';
         $data['nama'] = $this->payload->nama;
-        $data['buku'] = $this->bukuModel->getAllBuku();
+        $data['data_barang'] = $this->barangModel->getAllBarang();
         $data['waktu'] = [
             [
                 'waktu' => 3,
