@@ -113,10 +113,10 @@ class Barang_model
 
     public function hapusBarang($id)
     {
-        //Cek apakah id buku ada dalam database
+        //Cek apakah id barang ada dalam database
         $this->db->query("SELECT id FROM data_barang WHERE id = '$id'");
         $row = $this->db->numRows();
-        //Jika row berisikan nilai 0 maka tidak ada buku yang ingin dihapus dalam database
+        //Jika row berisikan nilai 0 maka tidak ada barang yang ingin dihapus dalam database
         if ($row == 0) {
             return 0;
         }

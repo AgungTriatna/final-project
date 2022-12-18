@@ -18,13 +18,14 @@ class Database
         $options = [
             //Supaya databasenya konek terus
             PDO::ATTR_PERSISTENT => true,
+             // set the PDO error mode to exception
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
 
         if ($this->dbh == null) {
             try {
                 $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-            } catch (PDOException $e) {
+            } catch (PDOException $e) {                                        // set the PDO error mode to exception
                 die($e->getMessage());
             }
         }
@@ -52,7 +53,7 @@ class Database
                     $type = PDO::PARAM_STR;
             }
         }
-
+        //Fungsi ini mengikat parameter ke queri SQL dan memberi tahu database apa saja parameternya.
         $this->stmt->bindValue($param, $value, $type);
     }
 
@@ -79,6 +80,7 @@ class Database
 
 
             // $this->stmt->bindValue($param, $value, $type);
+             //Fungsi ini mengikat parameter ke queri SQL dan memberi tahu database apa saja parameternya.
             $this->bind($param, $value, $type);
         }
     }
@@ -91,7 +93,7 @@ class Database
     public function resultSet()
     {
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);  //digunakan untuk mengambil baris hasil sebagai array asosiatif.
     }
 
     public function single()

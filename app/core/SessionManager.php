@@ -3,13 +3,19 @@
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+
+
+//cara untuk menyimpan informasi (dalam variabel) untuk digunakan di beberapa halaman
+//Tidak seperti cookie, informasi tidak disimpan di komputer pengguna.
+
 class SessionManager
 {
     private static string $SECRET_KEY = 'qwerty123321qwerty';
 
     public static function makeJwt(array $payload)
     {
-        $jwt = JWT::encode($payload, SessionManager::$SECRET_KEY, 'HS256');
+        //generate jwt
+        $jwt = JWT::encode($payload, SessionManager::$SECRET_KEY, 'HS256');   //menggunakan algoritma HS256(sign)
         return $jwt;
     }
 
@@ -21,6 +27,9 @@ class SessionManager
 
         return false;
     }
+
+    //request kedua
+    //validasi jwt apakah ada coocie atau tidak
 
     public static function getCurrentSession()
     {
