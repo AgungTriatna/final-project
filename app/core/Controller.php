@@ -14,3 +14,10 @@ abstract class Controller
         return new $model;
     }
 }
+
+
+
+
+
+
+//kita tidak bisa membuat object langsung dari abstract class

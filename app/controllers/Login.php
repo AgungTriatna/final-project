@@ -63,4 +63,17 @@ class Login extends Controller
             header('Location: ' . BASEURL . '');
         }
     }
+
+    public function cs()
+    {
+        $data['title'] = 'Kontak';
+        // $data['nama'] = $this->payload->nama;
+
+        $this->view('auth/header', $data);
+        $this->view('auth/cs');
+        $this->view('auth/footer');
+    }
+
+
+
 }
