@@ -25,6 +25,8 @@
                 <th>Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Tipe Barang</th>
+                <th>Jumlah Pinjam</th>
+                <th>Aksi</th>
               </tr>
             </thead>
                <?php $no =1;
@@ -34,6 +36,8 @@
                 <td><?= $brg['kode_barang'] ?></td>
                 <td><?= $brg['nama_barang'] ?></td>
                 <td><?= $brg['tipe_barang'] ?></td>
+                <td><?= $brg['jumlah_brg'] ?></td>
+                <td><button id="#" type="submit" class="btn btn-danger">Pinjaman Selesai</button></td>
             </tr>
 
              <?php endforeach; ?>
