@@ -103,6 +103,15 @@
                         </a>
                     </li>
 
+                    <li class="nav-item <?= ($data['title'] == 'Profil' ? 'active' : '') ?>">
+                        <a class="nav-link" href="<?= BASEURL ?>/member/profil">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                        </a>
+                    </li>
+
+                    
+
 
                     <li class="nav-item w-100">
                         <a class="nav-link" href="<?= BASEURL ?>/member/kontak">
