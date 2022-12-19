@@ -57,7 +57,7 @@ class Admin extends Controller
         if ($id) {
             $this->userModel->setujuiPinjaman($id);
              Flasher::setFlash('Request berhasil disetujui', 'success');
-             header('Location: ' . BASEURL . '/admin/daftar-pinjaman');
+             header('Location: ' . BASEURL . '/admin/approve-pinjaman');
         }
     }
 
@@ -66,8 +66,17 @@ class Admin extends Controller
         $insert = $this->userModel->tolakPinjaman($_POST);
         if ($insert>0) {
             Flasher::setFlash('Request berhasil ditolak', 'success');
-            header('Location: ' . BASEURL . '/admin/daftar-pinjaman');
+            header('Location: ' . BASEURL . '/admin/approve-pinjaman');
             exit();
+        }
+    }
+
+    public function pengembalian($id = 0)
+    {
+        if ($id) {
+            $this->userModel->pengembalianPinjaman($id);
+             Flasher::setFlash('Pengembalian berhasil', 'success');
+             header('Location: ' . BASEURL . '/admin/daftar-pinjaman');
         }
     }
 
@@ -250,6 +259,17 @@ class Admin extends Controller
 
         $this->view('admin/header', $data);
         $this->view('admin/daftar-pinjaman', $data);
+        $this->view('admin/footer');
+    }
+
+    public function approve_pinjaman()
+    {
+        $data['title'] = 'Apporval Peminjaman';
+        $data['nama'] = $this->payload->nama;
+        $data['pinjaman'] = $this->peminjamanModel->getApprovePinjaman();
+
+        $this->view('admin/header', $data);
+        $this->view('admin/approve-pinjaman', $data);
         $this->view('admin/footer');
     }
 

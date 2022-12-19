@@ -204,4 +204,17 @@ class User_model
 
         return $this->db->rowCount();
     }
+
+    public function pengembalianPinjaman($id)
+    {
+
+
+        $query = "UPDATE pinjaman SET status_pinjam='Selesai' WHERE id_pinjaman='$id'";
+
+        $this->db->query($query);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

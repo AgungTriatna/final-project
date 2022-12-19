@@ -1,4 +1,4 @@
-<h3 class="mb-3">Detail Request Barang</h3>
+<h3 class="mb-3">Detail Peminjaman</h3>
 
 <div class="row">
     <div class="col-sm-8">
@@ -17,8 +17,8 @@
                                     <?php endif ?></h5>
             <?php endforeach; ?>
             </div>
-           <h3 class="mb-3">Detail Request Barang</h3>
-           <table class="table">
+           <h3 class="mb-3">Detail Barang</h3>
+           <table id="tbl-daftar-pinjaman" class="table mt-3 dt-responsive nowrap">
             <thead class="thead-light">
               <tr>
                 <th>No</th>
@@ -26,7 +26,6 @@
                 <th>Nama Barang</th>
                 <th>Tipe Barang</th>
                 <th>Jumlah Pinjam</th>
-                <th>Aksi</th>
               </tr>
             </thead>
                <?php $no =1;
@@ -37,7 +36,6 @@
                 <td><?= $brg['nama_barang'] ?></td>
                 <td><?= $brg['tipe_barang'] ?></td>
                 <td><?= $brg['jumlah_brg'] ?></td>
-                <td><button id="#" type="submit" class="btn btn-danger">Pinjaman Selesai</button></td>
             </tr>
 
              <?php endforeach; ?>

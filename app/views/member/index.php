@@ -43,7 +43,7 @@
                 <?php else : ?>
                   <td class="text-success">Pinjaman Diterima</td>
                 <?php endif ?>
-                <td><a href="<?= BASEURL ?>/member/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Check Detail Data" style="color:white;">Check</a></td>
+                <td><a href="<?= BASEURL ?>/member/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Check Detail Data" style="color:white;">Detail</a></td>
               </tr>
             <?php endforeach ?>
           </tbody>

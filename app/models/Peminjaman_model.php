@@ -13,7 +13,15 @@ class Peminjaman_model
     public function getAllPinjaman()
     {
         $this->db->query("SELECT * FROM pinjaman 
-        JOIN users ON pinjaman.id_member = users.id WHERE status_pinjam!='Ditolak'
+        JOIN users ON pinjaman.id_member = users.id WHERE status_pinjam!='Sedang Diproses'
+        ORDER BY id_pinjaman DESC");
+        return $this->db->resultSet();
+    }
+
+    public function getApprovePinjaman()
+    {
+        $this->db->query("SELECT * FROM pinjaman 
+        JOIN users ON pinjaman.id_member = users.id WHERE status_pinjam='Sedang Diproses'
         ORDER BY id_pinjaman DESC");
         return $this->db->resultSet();
     }

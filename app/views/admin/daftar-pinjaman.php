@@ -1,4 +1,4 @@
-<h3 class="mb-3 text-center">Daftar Request Barang</h3>
+<h3 class="mb-3 text-center">Daftar Peminjaman</h3>
 <?php if (Flasher::check()) : ?>
   <?php $flash = Flasher::flash() ?>
   <div class="alert alert-<?= $flash['tipe'] ?> alert-dismissible fade show" role="alert">
@@ -30,18 +30,16 @@
             <td><?= date('d M Y', strtotime($p['tanggal_transaksi'])) ?></td>
             <td><?= $p['nama'] ?></td>
             <td><?= $p['lama_pinjam'] ?> Hari</td>
-
-            <?php if ($p['status_pinjam'] == "Sedang Diproses") : ?>
-              <td class="text-warning">Pinjaman Diproses</td>
-              <td><a href="<?= BASEURL ?>/admin/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Check Detail Data" style="color:white;">Check</a>
-                <a href="<?= BASEURL ?>/admin/setuju/<?= $p['id_pinjaman'] ?>" class="btn btn-success" title="Setujui" style="color:white;">Terima</a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#masukan_alasan<?= $p['id_pinjaman'] ?>" title="Ditolak">Tolak</button>
-              </td>
-            <?php elseif ($p['status_pinjam'] == "Ditolak") : ?>
+            <?php if ($p['status_pinjam'] == "Ditolak") : ?>
               <td class="text-danger">Pinjaman Ditolak</td>
+               <td><a href="<?= BASEURL ?>/admin/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Lihat Detail Data" style="color:white;">Detail</a></td>
+            <?php elseif ($p['status_pinjam'] == "Selesai") : ?>
+              <td class="text-info">Selesai</td>
+               <td><a href="<?= BASEURL ?>/admin/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Lihat Detail Data" style="color:white;">Detail</a></td>
             <?php else : ?>
               <td class="text-success">Pinjaman Diterima</td>
-              <td><a href="<?= BASEURL ?>/admin/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Check Detail Data" style="color:white;">Check</a></td>
+              <td><a href="<?= BASEURL ?>/admin/lihat_pinjaman/<?= $p['id_pinjaman'] ?>" class="btn btn-info" title="Lihat Detail Data" style="color:white;">Detail</a>
+                <a onclick="return confirm('Pengembalian Barang ?');" href="<?= BASEURL ?>/admin/pengembalian/<?= $p['id_pinjaman'] ?>" class="btn btn-success" title="Pengembalian Barang" style="color:white;">Pengembalian</a></td>
             <?php endif ?>
           </tr>
         <?php endforeach; ?>
